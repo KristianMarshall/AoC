@@ -1,0 +1,19 @@
+<%- include('./partials/header', { title: `D${day} - AoC 2022` }); %>
+<a href="/">Home</a>
+
+<% if (day > 1) { %>
+    <a href="/day/<%= parseInt(day)-1 %>">Last Day</a>
+<% } %>
+
+<a href="/day/<%= parseInt(day)+1 %>">Next Day</a>
+
+
+<h2>Day <%= day %></h2>
+
+<a href="https://adventofcode.com/2022/day/<%= day %> ">Day <%= day %> Story</a>
+<h3>Part One</h3>
+<p>Fetching Data...</p>
+<h3 id="P2">Part Two</h3>
+
+<script type="text/javascript" src="/days/day<%= day %>.js"></script>
+<%- include('./partials/footer'); %>

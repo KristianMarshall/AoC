@@ -3,6 +3,10 @@ body{
     color: white;
 }
 
+#answer{
+    color: red;
+}
+
 footer {
     margin-top: 2em;
 }
