@@ -1,9 +1,6 @@
-fetch("/input/day1/part1.txt")
-.then(response => response.text())
-.then(result => {
-    printOutput("Fetch Completed. Processing Data...");
+function runDay(input) {
 
-    elfFoodArray = result.split('\n');
+    let elfFoodArray = input.split('\n');
     let elfArray = [];
     let totalCal = 0;
     elfFoodArray.forEach(elfFood => {
@@ -31,4 +28,4 @@ fetch("/input/day1/part1.txt")
         topThree += elfArray[elf];
 
     printOutput(`The top three elves are carrying <span id="answer">${topThree}</span> calories`);
-});
+}

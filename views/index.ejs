@@ -1,7 +1,12 @@
 <%- include('./partials/header', { title: "AoC 2022" }); %>
 
 <% for( let day = 0; day < days.length; day++ ) { %>
-    <p><a href="/day/<%= day+1 %>">Day <%= day+1 %></a></p>
+    <% let currDay =  days[day].slice(3, days[day].length-3) %> 
+    <p>
+        <h2>Day <%= currDay %> </h2>
+        <a href="/day/<%= currDay %>"><button type="button">Run Code</button></a>
+        <a href="https://adventofcode.com/2022/day/<%= currDay %> "><button type="button">Story</button></a>
+    </p>
 <% } %>
 
 <%- include('./partials/footer'); %>

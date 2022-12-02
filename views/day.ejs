@@ -1,19 +1,42 @@
 <%- include('./partials/header', { title: `D${day} - AoC 2022` }); %>
-<a href="/">Home</a>
+<a href="/"><button type="button">Home</button></a>
 
 <% if (day > 1) { %>
-    <a href="/day/<%= parseInt(day)-1 %>">Last Day</a>
+    <a href="/day/<%= parseInt(day)-1 %>"><button type="button">Last Day</button></a>
 <% } %>
 
-<a href="/day/<%= parseInt(day)+1 %>">Next Day</a>
+<a href="/day/<%= parseInt(day)+1 %>"><button type="button">Next Day</button></a>
 
 
-<h2>Day <%= day %></h2>
+<h2>Day <%= day %></h2> <!-- TODO: Maybe add side by side div's then display the code on the right side-->
 
-<a href="https://adventofcode.com/2022/day/<%= day %> ">Day <%= day %> Story</a>
-<h3>Part One</h3>
-<p>Fetching Data...</p>
+<a href="https://adventofcode.com/2022/day/<%= day %> " target="_blank"><button type="button">Day <%= day %> Story</button></a>
+
+<% if (test) { %>
+    <a href="/day/<%= parseInt(day) %>"><button type="button">Switch To Real Input</button></a>
+    <h3>Part One</h3>
+    <p>Fetching Test Input...</p>
+<% } else { %>
+    <a href="/day/<%= parseInt(day) %>?test"><button type="button">Switch To Test Input</button></a>
+    <h3>Part One</h3>
+    <p>Fetching Real Input...</p>
+<% } %>
+
+
 <h3 id="P2">Part Two</h3>
 
 <script type="text/javascript" src="/days/day<%= day %>.js"></script>
+<script type="text/javascript">
+let testInput = '<%= test %>'; // should be a bool but looks awful because ejs so i put it in a string to get rid of the errors
+Promise.all([
+    fetch("/input/day<%= day %>test.txt"),
+    fetch("/input/day<%= day %>.txt")
+  ]).then(responses =>
+    Promise.all(responses.map(response => response.text()))
+  ).then(data =>
+    preRunDay(data) //fetched both input files and pass it to preRunDay which decides to give it the test case or not
+  ).catch(err =>
+    console.log(err)
+  );
+</script>
 <%- include('./partials/footer'); %>

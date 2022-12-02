@@ -14,11 +14,14 @@ app.get("/", (request, response) => {
             return console.log('Unable to scan directory: ' + err);
 
             response.render("index", {days: files});
-
+        
     });
     
 });
 
 app.get("/day/:day", (request, response) => {
-    response.render(`day`, {day: request.params.day});
+    response.render(`day`, {
+        day: request.params.day,
+        test: request.query.test !== undefined
+    });
 });

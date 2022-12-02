@@ -1,6 +1,4 @@
-fetch("/input/day2.txt")
-.then(response => response.text())
-.then(result => {
+function runDay(input) {
     let scoreValues = {
         X:  1, //Rock
         Y:  2, //Paper
@@ -19,8 +17,8 @@ fetch("/input/day2.txt")
         "A Y": 6,
         "A Z": 0
     }
-    printOutput("Fetch Completed. Processing Data...");
-    let moveStrats = result.split('\n');
+
+    let moveStrats = input.split('\n');
     let score = 0;
     moveStrats.forEach(move =>{
         if(letterConvert[move[0]] == move[2]) //Draw
@@ -54,5 +52,5 @@ fetch("/input/day2.txt")
 
     printOutput(`Score with strategy guide: <span id="answer">${score}<span>`);
 
-});
+}
 
