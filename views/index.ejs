@@ -1,5 +1,7 @@
 <%- include('./partials/header', { title: "AoC 2022" }); %>
 
-<a href="/day/1">Day 1</a> <!--TODO: turn this into a for loop for days that exist-->
+<% for( let day = 0; day < days.length; day++ ) { %>
+    <p><a href="/day/<%= day+1 %>">Day <%= day+1 %></a></p>
+<% } %>
 
 <%- include('./partials/footer'); %>

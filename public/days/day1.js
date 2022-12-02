@@ -32,9 +32,3 @@ fetch("/input/day1/part1.txt")
 
     printOutput(`The top three elves are carrying <span id="answer">${topThree}</span> calories`);
 });
-
-function printOutput(stringToPrint = ""){
-    let output = document.querySelectorAll("p");
-    stringToPrint = `<p>${stringToPrint}</p>`;
-    output[output.length-1].insertAdjacentHTML("afterend", stringToPrint);
-}
