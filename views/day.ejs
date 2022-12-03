@@ -36,7 +36,7 @@ Promise.all([
   ).then(data =>
     preRunDay(data) //fetched both input files and pass it to preRunDay which decides to give it the test case or not
   ).catch(err =>
-    console.log(err)
+    console.log(err) //TODO: should handle error properly
   );
 </script>
 <%- include('./partials/footer'); %>

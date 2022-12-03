@@ -1,5 +1,5 @@
-function printOutput(stringToPrint = ""){
-    let output = document.querySelectorAll("p");
+function printOutput(stringToPrint = "", elementToPrintAfter="p"){
+    let output = document.querySelectorAll(elementToPrintAfter);
     stringToPrint = `<p>${stringToPrint}</p>`;
     output[output.length-1].insertAdjacentHTML("afterend", stringToPrint);
 }
