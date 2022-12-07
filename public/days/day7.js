@@ -18,6 +18,26 @@ function runDay(input) {
     });
 
     printOutput(`Total size of directories under 100000 is <span id="answer">${sumSizes}</span>`);
+
+    printOutput("Calculating disk space needed for update", "h3");
+
+    let remainingSpace = 70000000 - dataSizes["//"];
+    let spaceNeeded = 30000000 - remainingSpace;
+
+    printOutput(`Current remaining space is: ${remainingSpace}. so we need ${spaceNeeded} more space for the update.`);
+    printOutput("Now finding the smallest file we can delete to make space for the update...");
+
+    let dirToDeleteSize = 999999999;
+    let dirToDelete = "";
+    for(const dir in dataSizes){
+        if(dataSizes[dir] <= dirToDeleteSize && dataSizes[dir] >= spaceNeeded){
+            dirToDeleteSize = dataSizes[dir];
+            dirToDelete = dir;
+        }
+    }
+
+    printOutput(`The best directory to delete would be ${dirToDelete.slice(1)} with a size of <span id="answer">${dirToDeleteSize}</span>`);
+
 }
 
 function runCommand(command, index) {
