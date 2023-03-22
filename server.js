@@ -9,11 +9,12 @@ app.set('view engine', 'ejs');
 app.get("/", (request, response) => {
 
     fs.readdir(path.join(__dirname, './public/days'), function (err, files) {
-
+        
         if (err)
             return console.log('Unable to scan directory: ' + err);
 
-            response.render("index", {days: files});
+        files.sort(fileSort);
+        response.render("index", {days: files});
         
     });
     
@@ -25,3 +26,9 @@ app.get("/day/:day", (request, response) => {
         test: request.query.test !== undefined
     });
 });
+
+function fileSort(a, b){
+    a = parseInt(a.slice(3, a.length-3));
+    b = parseInt(b.slice(3, b.length-3));
+    return a - b;
+}
